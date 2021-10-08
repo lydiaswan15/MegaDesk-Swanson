@@ -65,5 +65,30 @@ namespace MegaDesk_Swanson
         {
 
         }
+
+        private void btnGetQuotePrice_Click(object sender, EventArgs e)
+        {
+            var desk = new Desk();
+            desk.Width = numWidth.Value;
+            desk.Depth = numDepth.Value;
+            desk.NumOfDrawers = (int)nudNumOfDrawers.Value;
+
+            
+            var deskQuote = new DeskQuote();
+            deskQuote.CustomerName = txtCustomerName.Text;
+            deskQuote.DateQuote = DateTime.Now;
+            deskQuote.Shipping = (ShippingType)cmbShipping.SelectedItem;
+            deskQuote.Desk = desk;
+            DeskQuote.GetRushOrder(deskQuote.Shipping);
+            Console.WriteLine(deskQuote.Shipping);
+            /*deskQuote.QuoteAmount = GetQuoteAmount(
+                desk.SurfaceMaterial, 
+                desk.NumOfDrawers, 
+                desk.Width, 
+                desk.Depth, 
+                deskQuote.Shipping);*/
+
+            
+        }
     }
 }

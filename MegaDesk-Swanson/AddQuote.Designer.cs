@@ -32,9 +32,9 @@ namespace MegaDesk_Swanson
             this.label1 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.nudWidth = new System.Windows.Forms.NumericUpDown();
+            this.numWidth = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.nudDepth = new System.Windows.Forms.NumericUpDown();
+            this.numDepth = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.nudNumOfDrawers = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,8 +44,8 @@ namespace MegaDesk_Swanson
             this.btnGetQuotePrice = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDepth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDepth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumOfDrawers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,23 +77,23 @@ namespace MegaDesk_Swanson
             this.label2.TabIndex = 2;
             this.label2.Text = "Width:";
             // 
-            // nudWidth
+            // numWidth
             // 
-            this.nudWidth.Location = new System.Drawing.Point(226, 195);
-            this.nudWidth.Maximum = new decimal(new int[] {
+            this.numWidth.Location = new System.Drawing.Point(226, 195);
+            this.numWidth.Maximum = new decimal(new int[] {
             96,
             0,
             0,
             0});
-            this.nudWidth.Minimum = new decimal(new int[] {
+            this.numWidth.Minimum = new decimal(new int[] {
             24,
             0,
             0,
             0});
-            this.nudWidth.Name = "nudWidth";
-            this.nudWidth.Size = new System.Drawing.Size(120, 20);
-            this.nudWidth.TabIndex = 3;
-            this.nudWidth.Value = new decimal(new int[] {
+            this.numWidth.Name = "numWidth";
+            this.numWidth.Size = new System.Drawing.Size(120, 20);
+            this.numWidth.TabIndex = 3;
+            this.numWidth.Value = new decimal(new int[] {
             24,
             0,
             0,
@@ -109,23 +109,23 @@ namespace MegaDesk_Swanson
             this.label3.TabIndex = 4;
             this.label3.Text = "Depth:";
             // 
-            // nudDepth
+            // numDepth
             // 
-            this.nudDepth.Location = new System.Drawing.Point(226, 243);
-            this.nudDepth.Maximum = new decimal(new int[] {
+            this.numDepth.Location = new System.Drawing.Point(226, 243);
+            this.numDepth.Maximum = new decimal(new int[] {
             48,
             0,
             0,
             0});
-            this.nudDepth.Minimum = new decimal(new int[] {
+            this.numDepth.Minimum = new decimal(new int[] {
             12,
             0,
             0,
             0});
-            this.nudDepth.Name = "nudDepth";
-            this.nudDepth.Size = new System.Drawing.Size(120, 20);
-            this.nudDepth.TabIndex = 5;
-            this.nudDepth.Value = new decimal(new int[] {
+            this.numDepth.Name = "numDepth";
+            this.numDepth.Size = new System.Drawing.Size(120, 20);
+            this.numDepth.TabIndex = 5;
+            this.numDepth.Value = new decimal(new int[] {
             12,
             0,
             0,
@@ -192,6 +192,7 @@ namespace MegaDesk_Swanson
             this.btnGetQuotePrice.TabIndex = 12;
             this.btnGetQuotePrice.Text = "Save";
             this.btnGetQuotePrice.UseVisualStyleBackColor = true;
+            this.btnGetQuotePrice.Click += new System.EventHandler(this.btnGetQuotePrice_Click);
             // 
             // btnCancel
             // 
@@ -227,9 +228,9 @@ namespace MegaDesk_Swanson
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nudNumOfDrawers);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.nudDepth);
+            this.Controls.Add(this.numDepth);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.nudWidth);
+            this.Controls.Add(this.numWidth);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.label1);
@@ -237,8 +238,8 @@ namespace MegaDesk_Swanson
             this.Text = "AddQuote";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddQuote_FormClosed);
             this.Load += new System.EventHandler(this.AddQuote_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDepth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDepth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumOfDrawers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -250,9 +251,9 @@ namespace MegaDesk_Swanson
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown nudWidth;
+        private System.Windows.Forms.NumericUpDown numWidth;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudDepth;
+        private System.Windows.Forms.NumericUpDown numDepth;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown nudNumOfDrawers;
         private System.Windows.Forms.Label label5;

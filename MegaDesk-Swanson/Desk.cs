@@ -19,7 +19,7 @@ namespace MegaDesk_Swanson
     {
         public decimal Width { get; set; }
 
-        public decimal Height { get; set; }
+        public decimal Depth { get; set; }
 
         public int NumOfDrawers { get; set; }
 
