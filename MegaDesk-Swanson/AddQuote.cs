@@ -72,6 +72,7 @@ namespace MegaDesk_Swanson
             desk.Width = numWidth.Value;
             desk.Depth = numDepth.Value;
             desk.NumOfDrawers = (int)nudNumOfDrawers.Value;
+            decimal sizeOfDesk = desk.Width * desk.Depth;
 
             
             var deskQuote = new DeskQuote();
@@ -79,7 +80,7 @@ namespace MegaDesk_Swanson
             deskQuote.DateQuote = DateTime.Now;
             deskQuote.Shipping = (ShippingType)cmbShipping.SelectedItem;
             deskQuote.Desk = desk;
-            DeskQuote.GetRushOrder(deskQuote.Shipping);
+            DeskQuote.GetRushOrder(deskQuote.Shipping, sizeOfDesk);
             Console.WriteLine(deskQuote.Shipping);
             /*deskQuote.QuoteAmount = GetQuoteAmount(
                 desk.SurfaceMaterial, 
