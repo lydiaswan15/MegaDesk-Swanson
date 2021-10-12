@@ -97,7 +97,7 @@ namespace MegaDesk_Swanson
 
         }
 
-
+       
         public static int GetQuoteAmount()
         {
             return 2;
