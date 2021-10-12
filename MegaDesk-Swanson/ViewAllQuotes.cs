@@ -40,33 +40,28 @@ namespace MegaDesk_Swanson
 
             if(File.Exists(quotesFile))
             {
-               /*
-                using(StreamReader reader = new StreamReader(quotesFile))
-                {
-                    string quotes = reader.ReadToEnd();
-
+                    string myJsonString = File.ReadAllText(@"quotes.json");
+                    var quotes = JsonConvert.DeserializeObject<List<DeskQuote>>(myJsonString);
                     // This uses Newtonsoft.json
 
-                    //List<DeskQuote> deskQuote = JsonConvert.DeserializeObject<List<DesQuote>>(quotes);
+                  //  List<DeskQuote> deskQuotes = quotes;
 
-                    List<DeskQuote> deskQuotes = JsonSerializer.Deserialize<List<DeskQuote>>(quotes);
-
-                    dataGridView1.DataSource = DeskQuote.Select(d => new
+                    dataGridView1.DataSource = quotes.Select(d => new
                     {
 
-                        Date = d.QuoteDate,
+                        Date = d.DateQuote,
                         Customer = d.CustomerName,
-                        Depth = d.DeskQuote,
+                        Depth = d.Desk.Depth,
                         Width = d.Desk.Width,
-                        Drawers = d.DeskNumberOfDrawers,
-                        SurfaceMaterial = d.DeskMaterial,
-                        DeliveryType = d.DeliverType,
-                        QuoteAmount = d.QUotePrice.ToString("c")
+                        Drawers = d.Desk.NumOfDrawers,
+                        SurfaceMaterial = d.Desk.SurfaceMaterial,
+                        DeliveryType = d.Shipping,
+                        QuoteAmount = d.QuoteAmount.ToString("c")
                     }
                     ).ToList();
                 }
-               */
-            }
+               
+            
         }
     }
 }
