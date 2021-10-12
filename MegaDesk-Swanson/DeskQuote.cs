@@ -72,7 +72,7 @@ namespace MegaDesk_Swanson
             {
                 sizeOfDeskGroup = 0;
             }
-            else if (sizeOfDesk < 2000)
+            else if (sizeOfDesk <= 2000)
             {
                 sizeOfDeskGroup = 1;
             }
@@ -91,18 +91,43 @@ namespace MegaDesk_Swanson
 
             Int64.Parse(shippingPrice);
 
-            Console.WriteLine(shippingPrice);
+            Console.WriteLine("Shipping Price: " + shippingPrice);
 
-            return 2; 
-
+            return Convert.ToInt32(shippingPrice);
         }
 
-       
-        public static int GetQuoteAmount()
+
+        public static int GetQuoteAmount(DesktopMaterial SurfaceMaterial, int NumOfDrawers, decimal Width, decimal Depth, int ShippingPrice )
         {
-            return 2;
-        }
+            int BaseDeskPrice = 200;
+            int MaterialPrice;
+            int DrawerPrice = 50;
+            decimal SurfaceArea = Width * Depth;
+            int ExtraSurfaceAreaPrice = 0;
+            if(SurfaceArea > 1000)
+            {
+                ExtraSurfaceAreaPrice = Convert.ToInt32(SurfaceArea) - 1000;
+            }
+            switch (Convert.ToString(SurfaceMaterial))
+            {
+                case "Laminate": MaterialPrice = 100;
+                    break;
+                case "Oak": MaterialPrice = 200;
+                    break;
+                case "Pine": MaterialPrice = 50;
+                    break;
+                case "Rosewood": MaterialPrice = 300;
+                    break;
+                case "Veneer": MaterialPrice = 125;
+                    break;
+                default: MaterialPrice = 100;
+                    break;
 
+            }
+            int TotalPrice = BaseDeskPrice + MaterialPrice + (NumOfDrawers * DrawerPrice) + ShippingPrice + ExtraSurfaceAreaPrice;
+            Console.WriteLine("Total Price: " + TotalPrice);
+            return TotalPrice;
+        }
 
     }
 }

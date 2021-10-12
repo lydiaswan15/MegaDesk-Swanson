@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,12 +68,13 @@ namespace MegaDesk_Swanson
 
         }
 
-        private void btnGetQuotePrice_Click(object sender, EventArgs e)
+        private void btn_SaveQuote(object sender, EventArgs e)
         {
             var desk = new Desk();
             desk.Width = numWidth.Value;
             desk.Depth = numDepth.Value;
             desk.NumOfDrawers = (int)nudNumOfDrawers.Value;
+            desk.SurfaceMaterial = (DesktopMaterial) cmbSurfaceMaterial.SelectedValue;
             decimal sizeOfDesk = desk.Width * desk.Depth;
 
             
@@ -80,16 +83,20 @@ namespace MegaDesk_Swanson
             deskQuote.DateQuote = DateTime.Now;
             deskQuote.Shipping = (ShippingType)cmbShipping.SelectedItem;
             deskQuote.Desk = desk;
-            DeskQuote.GetRushOrder(deskQuote.Shipping, sizeOfDesk);
-            Console.WriteLine(deskQuote.Shipping);
-            /*deskQuote.QuoteAmount = GetQuoteAmount(
+            int ShippingPrice = DeskQuote.GetRushOrder(deskQuote.Shipping, sizeOfDesk);
+            deskQuote.QuoteAmount = DeskQuote.GetQuoteAmount(
                 desk.SurfaceMaterial, 
                 desk.NumOfDrawers, 
                 desk.Width, 
                 desk.Depth, 
-                deskQuote.Shipping);*/
+                ShippingPrice);
 
-            
+            string myJsonString = File.ReadAllText(@"quotes.json");
+            var list = JsonConvert.DeserializeObject<List<DeskQuote>>(myJsonString);
+            list.Add(deskQuote);
+            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
+            File.WriteAllText(@"quotes.json", convertedJson);
+            this.Close();
         }
     }
 }

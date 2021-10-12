@@ -144,6 +144,11 @@ namespace MegaDesk_Swanson
             // nudNumOfDrawers
             // 
             this.nudNumOfDrawers.Location = new System.Drawing.Point(581, 195);
+            this.nudNumOfDrawers.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
             this.nudNumOfDrawers.Name = "nudNumOfDrawers";
             this.nudNumOfDrawers.Size = new System.Drawing.Size(120, 20);
             this.nudNumOfDrawers.TabIndex = 7;
@@ -192,7 +197,7 @@ namespace MegaDesk_Swanson
             this.btnGetQuotePrice.TabIndex = 12;
             this.btnGetQuotePrice.Text = "Save";
             this.btnGetQuotePrice.UseVisualStyleBackColor = true;
-            this.btnGetQuotePrice.Click += new System.EventHandler(this.btnGetQuotePrice_Click);
+            this.btnGetQuotePrice.Click += new System.EventHandler(this.btn_SaveQuote);
             // 
             // btnCancel
             // 
