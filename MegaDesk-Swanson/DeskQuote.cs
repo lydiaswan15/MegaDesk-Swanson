@@ -72,7 +72,7 @@ namespace MegaDesk_Swanson
             {
                 sizeOfDeskGroup = 0;
             }
-            else if (sizeOfDesk < 2000)
+            else if (sizeOfDesk <= 2000)
             {
                 sizeOfDeskGroup = 1;
             }
