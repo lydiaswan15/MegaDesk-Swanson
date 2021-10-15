@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MegaDesk_Swanson
 {
     public partial class AddQuote : Form
@@ -91,12 +92,33 @@ namespace MegaDesk_Swanson
                 desk.Depth, 
                 ShippingPrice);
 
-            string myJsonString = File.ReadAllText(@"quotes.json");
-            var list = JsonConvert.DeserializeObject<List<DeskQuote>>(myJsonString);
-            list.Add(deskQuote);
-            var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
-            File.WriteAllText(@"quotes.json", convertedJson);
-            this.Close();
+
+            string fileName = @"quotes.json";
+            if (!File.Exists(fileName))
+            {
+                File.Create(fileName).Dispose();
+                var list = new List<DeskQuote>();
+                list.Add(deskQuote);
+                string json = JsonConvert.SerializeObject(list);
+                File.WriteAllText(fileName, json);
+                this.Close();
+            }
+            else {
+
+                string myJsonString = File.ReadAllText(@"quotes.json");
+                var list = JsonConvert.DeserializeObject<List<DeskQuote>>(myJsonString);
+                list.Add(deskQuote);
+                var convertedJson = JsonConvert.SerializeObject(list, Formatting.Indented);
+                File.WriteAllText(@"quotes.json", convertedJson);
+                this.Close();
+            }
+          
+            
+      
+            
+            
+
+            
         }
     }
 }
